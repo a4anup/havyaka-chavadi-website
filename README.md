@@ -12,9 +12,26 @@ A complete static landing page using the **eight original assets** from the supp
 
 No npm install, build system, API keys, or backend is needed.
 
+## Coming-soon mode (current)
+
+Until the app launches, havyakachavadi.in shows a bilingual coming-soon page:
+
+- `index.html`: the coming-soon page (animated logo, contact email, EN/ಕನ್ನಡ and light/dark/auto toggles).
+- `css/coming-soon.css`, `js/coming-soon.js`: its styles and script. Text comes from the `soon*` keys in `config/locales.json`.
+- `site.html`: the full website, waiting for launch. Preview it locally at http://localhost:8080/site.html. It has a `noindex` tag so search engines skip it before launch.
+
+### Launch day
+
+```sh
+sh scripts/launch.sh   # deletes the coming-soon page, makes site.html the new index.html, removes noindex, commits
+git push               # GitHub Pages publishes it to havyakachavadi.in within a minute or two
+```
+
+Before launching, put the real store links in `config/app-links.json`.
+
 ## Edit
 
-- `index.html`: sections, content layout and SEO structure.
+- `site.html` (becomes `index.html` at launch): sections, content layout and SEO structure.
 - `css/styles.css`: all shared design tokens, responsive styles, dark theme.
 - `js/main.js`: language switcher, theme switcher, mobile menu.
 - `config/locales.json`: **single source of truth for all English and Kannada UI text**. Both locales have identical keys.

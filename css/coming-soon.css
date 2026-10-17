@@ -1,0 +1,77 @@
+/* Coming-soon page — uses the brand tokens and toggles from styles.css. Remove this file's <link> on launch day along with the page. */
+@property --soon-a{syntax:'<angle>';inherits:false;initial-value:0deg}
+
+.soon{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;overflow-x:hidden;position:relative;background:radial-gradient(120% 70% at 50% 0%,color-mix(in srgb,var(--gold) 14%,var(--ivory)),var(--ivory) 60%)}
+.soon-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='%23D99400' stroke-opacity='.13' stroke-width='1.2'%3E%3Cpath d='M28 8c6 6 6 14 0 20-6-6-6-14 0-20zM28 48c-6-6-6-14 0-20 6 6 6 14 0 20zM8 28c6-6 14-6 20 0-6 6-14 6-20 0zM48 28c-6 6-14 6-20 0 6-6 14-6 20 0z'/%3E%3C/g%3E%3C/svg%3E");-webkit-mask-image:radial-gradient(ellipse at 50% 40%,#000 10%,transparent 75%);mask-image:radial-gradient(ellipse at 50% 40%,#000 10%,transparent 75%)}
+.soon-orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35}
+.soon-orb-1{width:420px;height:420px;background:var(--gold-light);top:-120px;left:-140px;animation:soon-drift 18s ease-in-out infinite alternate}
+.soon-orb-2{width:380px;height:380px;background:#18446d;bottom:-140px;right:-120px;opacity:.22;animation:soon-drift 22s ease-in-out infinite alternate-reverse}
+:root[data-theme=dark] .soon-orb-1{opacity:.18}
+:root[data-theme=dark] .soon-orb-2{background:#2a6aa8;opacity:.3}
+
+.soon-top,.soon-main,.soon-foot{position:relative;z-index:1}
+.soon-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:16px 0}
+.soon-brand{font-family:'Playfair Display','Noto Sans Kannada',serif;font-weight:700;font-size:18px;color:var(--navy)}
+.soon .controls{display:flex;gap:8px;flex-wrap:wrap}
+.soon .toggle{--w:52px;--h:32px}
+.soon .toggle.icons{--w:36px}
+.soon .toggle button{font-size:12px}
+.soon .toggle svg{width:16px;height:16px}
+
+.soon-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px 0 28px}
+.soon-main h1{font-size:clamp(32px,8.5vw,60px);margin:10px 0 14px;color:var(--navy);max-width:760px}
+.soon-body{color:var(--muted);font-size:16px;max-width:600px;margin:0 0 6px}
+.soon-eyebrow{display:inline-flex;align-items:center;gap:10px;margin:28px 0 0;padding:7px 16px;border:1px solid color-mix(in srgb,var(--gold) 45%,transparent);border-radius:999px;background:color-mix(in srgb,var(--surface) 70%,transparent);font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+html[lang=kn] .soon-eyebrow{letter-spacing:.04em;font-size:13px}
+.soon-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 color-mix(in srgb,var(--gold) 60%,transparent);animation:soon-ping 2s ease-out infinite}
+
+/* Logo: glowing, floating card with a rotating gold edge, light sweep and twinkling sparks */
+.soon-logo{position:relative;width:min(340px,76vw);aspect-ratio:1350/1200;animation:soon-float 6s ease-in-out 1.4s infinite}
+.soon-glow{position:absolute;inset:-18%;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--gold) 55%,transparent),transparent 65%);filter:blur(20px);animation:soon-pulse 4s ease-in-out infinite}
+.soon-ring{position:absolute;inset:-4px;border-radius:32px;background:conic-gradient(from var(--soon-a),var(--gold),var(--gold-light) 25%,transparent 40%,transparent 60%,var(--gold-light) 75%,var(--gold));animation:soon-spin 6s linear infinite}
+.soon-card{position:absolute;inset:0;border-radius:28px;overflow:hidden;background:var(--surface);box-shadow:0 24px 60px rgba(7,30,56,.25)}
+.soon-card img{width:100%;height:100%;object-fit:cover}
+.soon-shine{position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);transform:translateX(-120%);animation:soon-shine 6s ease-in-out 2s infinite}
+.soon-spark{position:absolute;width:18px;height:18px;background:var(--gold);clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);opacity:0;animation:soon-twinkle 3.2s ease-in-out infinite}
+.soon-spark.s1{top:-14px;left:12%;animation-delay:.2s}
+.soon-spark.s2{top:22%;right:-22px;width:12px;height:12px;animation-delay:1.1s}
+.soon-spark.s3{bottom:-12px;right:18%;animation-delay:1.9s}
+.soon-spark.s4{bottom:30%;left:-22px;width:12px;height:12px;animation-delay:2.6s}
+
+.soon-divider{display:flex;align-items:center;gap:12px;margin:18px 0 14px;color:var(--gold)}
+.soon-divider span{width:56px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.soon-divider span:last-child{transform:scaleX(-1)}
+.soon-divider svg{width:20px;height:20px;fill:currentColor;animation:soon-spin-flat 12s linear infinite}
+.soon-contact{font-size:15px;color:var(--ink);margin:0 0 10px}
+.soon-contact a{color:var(--navy);font-weight:700;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px;text-decoration-thickness:2px;overflow-wrap:anywhere}
+.soon-contact a:hover{color:var(--gold)}
+.soon-tag{font-size:11px;font-weight:800;letter-spacing:.2em;color:var(--muted);margin:14px 0 0}
+html[lang=kn] .soon-tag{letter-spacing:.04em;font-size:12px}
+.soon-foot{text-align:center;font-size:12px;color:var(--muted);padding:16px 0 calc(20px + env(safe-area-inset-bottom))}
+
+/* Entrance: hidden until the right language is applied, then the logo pops in and text rises in sequence */
+.js .soon:not(.ready) .soon-logo,.js .soon:not(.ready) .rise{opacity:0}
+.ready .soon-card{animation:soon-pop 1s cubic-bezier(.2,.9,.25,1.2) both}
+.ready .soon-ring{animation:soon-spin 6s linear infinite,soon-fade 1s .3s both}
+.ready .rise{animation:soon-rise .8s cubic-bezier(.2,.7,.2,1) both}
+.r1{animation-delay:.5s!important}.r2{animation-delay:.65s!important}.r3{animation-delay:.8s!important}.r4{animation-delay:.95s!important}.r5{animation-delay:1.1s!important}.r6{animation-delay:1.25s!important}
+
+@keyframes soon-pop{from{opacity:0;transform:scale(.82) rotate(-2deg)}to{opacity:1;transform:none}}
+@keyframes soon-fade{from{opacity:0}}
+@keyframes soon-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes soon-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes soon-pulse{0%,100%{opacity:.55;transform:scale(.95)}50%{opacity:1;transform:scale(1.05)}}
+@keyframes soon-spin{to{--soon-a:360deg}}
+@keyframes soon-spin-flat{to{transform:rotate(360deg)}}
+@keyframes soon-shine{0%{transform:translateX(-120%)}30%,100%{transform:translateX(120%)}}
+@keyframes soon-twinkle{0%,100%{opacity:0;transform:scale(.4) rotate(0)}50%{opacity:1;transform:scale(1) rotate(90deg)}}
+@keyframes soon-ping{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--gold) 60%,transparent)}100%{box-shadow:0 0 0 10px transparent}}
+@keyframes soon-drift{to{transform:translate(60px,40px) scale(1.1)}}
+
+@media(min-width:640px){
+.soon-top{padding:22px 0}
+.soon-brand{font-size:20px}
+.soon-body{font-size:17px}
+.soon-logo{width:min(370px,calc(40svh * 1.125))}
+}
+@media(prefers-reduced-motion:reduce){.js .soon .soon-logo,.js .soon .rise{opacity:1}}
