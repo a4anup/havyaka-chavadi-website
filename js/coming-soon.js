@@ -14,7 +14,8 @@
 
  let messages;
  try{const r=await fetch('./config/locales.json',{cache:'no-cache'});if(!r.ok)throw Error('Locale fetch failed');messages=await r.json()}catch(e){console.error('Could not load locale config. Serve with a local HTTP server (not file://).',e);reveal();return}
- let language=store.get('hc-language')==='kn'?'kn':'en';
+ // Kannada by default; English only if the visitor chose it before
+ let language=store.get('hc-language')==='en'?'en':'kn';
 
  // Headline is split into words so each one can rise in with its own gold shimmer
  const splitTitle=()=>{const h=$('.soon-title'),words=h.textContent.trim().split(/\s+/);h.setAttribute('aria-label',h.textContent.trim());h.innerHTML='';words.forEach((w,i)=>{const s=document.createElement('span');s.className='w';s.setAttribute('aria-hidden','true');s.style.setProperty('--i',i);s.textContent=w;h.append(s,' ')})};

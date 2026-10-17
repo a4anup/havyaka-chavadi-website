@@ -2,7 +2,8 @@
 (async function(){
  const $=s=>document.querySelector(s);let messages;
  try{const r=await fetch('./config/locales.json',{cache:'no-cache'});if(!r.ok)throw Error('Locale fetch failed');messages=await r.json()}catch(e){console.error('Could not load locale config. Serve with a local HTTP server (not file://).',e);return}
- const savedLang=localStorage.getItem('hc-language');let language=savedLang==='kn'?'kn':'en';
+ // Kannada by default; English only if the visitor chose it before
+ let savedLang=null;try{savedLang=localStorage.getItem('hc-language')}catch(e){}let language=savedLang==='en'?'en':'kn';
  const applyLanguage=()=>{const dict=messages[language];document.documentElement.lang=language;document.title=dict.siteTitle;const meta=$('meta[name="description"]');if(meta)meta.content=dict.siteDescription;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(dict[k]!==undefined)el.textContent=dict[k]});document.querySelectorAll('[data-i18n-aria]').forEach(el=>{const k=el.dataset.i18nAria;if(dict[k]!==undefined){el.setAttribute('aria-label',dict[k]);if(el.tagName==='BUTTON')el.title=dict[k]}});setToggle('#langToggle','lang',language);$('#menuBtn').setAttribute('aria-label',dict.menuOpen)};
  const setToggle=(sel,key,val)=>{const box=$(sel),btns=[...box.querySelectorAll('button')];btns.forEach((b,i)=>{const on=b.dataset[key]===val;b.setAttribute('aria-checked',String(on));if(on)box.style.setProperty('--i',i)})};
  $('#langToggle').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;language=b.dataset.lang;localStorage.setItem('hc-language',language);applyLanguage()});
