@@ -1,6 +1,6 @@
 # Havyaka Chavadi — Bilingual Promotional Website
 
-A complete static landing page using the **eight original assets** from the supplied HavyakaChavadi ZIP.
+A complete static landing page using the supplied Havyaka Chavadi artwork in `assets/`.
 
 ## Start in VS Code
 
@@ -36,7 +36,8 @@ Before launching, put the real store links in `config/app-links.json`.
 - `css/styles.css`: all shared design tokens, responsive styles, dark theme.
 - `js/main.js`: language switcher, theme switcher, mobile menu.
 - `config/locales.json`: **single source of truth for all English and Kannada UI text**. Both locales have identical keys.
-- `assets/`: supplied logos, splash image and app icons. No replacements were generated.
+- `assets/`: supplied artwork (spelling-corrected versions). `havyaka_main_logo.png` (coming-soon logo), `havyaka_chavadi_light.png` / `havyaka_chavadi_dark.png` (hero logo per theme), `havyaka_splash.png` (About section and launch phone), `havyaka_app_icon_1024.png` (browser icon). `havyaka_splash_bg_720.jpg` is a small copy of the splash used as the faint background; regenerate it if the splash changes:
+  `sips -s format jpeg -s formatOptions 72 --resampleWidth 720 assets/havyaka_splash.png --out assets/havyaka_splash_bg_720.jpg`
 
 ## Deploy
 
