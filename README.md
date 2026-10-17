@@ -18,6 +18,7 @@ Until the app launches, havyakachavadi.in shows a bilingual coming-soon page:
 
 - `index.html`: the coming-soon page (animated logo, contact email, EN/ಕನ್ನಡ and light/dark/auto toggles).
 - `css/coming-soon.css`, `js/coming-soon.js`: its styles and script. Text comes from the `soon*` keys in `config/locales.json`.
+- `css/festive.css`, `js/festive.js`: festive effects shared by both pages and kept after launch: carved doors that open over the main logo, mango-leaf toran, diya sparks, drawn mandala, faint chavadi background (`assets/havyaka_splash_bg_720.jpg`, a small copy of the splash art), 3D logo tilt and the copy-email button.
 - `site.html`: the full website, waiting for launch. Preview it locally at http://localhost:8080/site.html. It has a `noindex` tag so search engines skip it before launch.
 
 ### Launch day

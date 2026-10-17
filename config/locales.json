@@ -107,7 +107,9 @@
     "soonTitle": "Our chavadi is almost ready.",
     "soonBody": "A welcoming digital gathering place for Havyaka families, friends and generations to connect, celebrate our heritage and help each other thrive. We are getting ready to open the doors.",
     "soonContact": "Have a question? Write to us at",
-    "soonMainLabel": "Coming soon"
+    "soonMainLabel": "Coming soon",
+    "copyEmail": "Copy email address",
+    "emailCopied": "Email copied!"
   },
   "kn": {
     "siteTitle": "ಹವ್ಯಕ ಚಾವಡಿ | ನಮ್ಮ ಸಮುದಾಯ, ನಮ್ಮ ಚಾವಡಿ",
@@ -217,6 +219,8 @@
     "soonTitle": "ನಮ್ಮ ಚಾವಡಿ ಸಿದ್ಧವಾಗುತ್ತಿದೆ.",
     "soonBody": "ಹವ್ಯಕ ಕುಟುಂಬಗಳು, ಸ್ನೇಹಿತರು ಮತ್ತು ತಲೆಮಾರುಗಳು ಒಂದಾಗಲು, ನಮ್ಮ ಪರಂಪರೆಯನ್ನು ಸಂಭ್ರಮಿಸಲು ಮತ್ತು ಪರಸ್ಪರ ನೆರವಾಗಲು ಒಂದು ಆತ್ಮೀಯ ಡಿಜಿಟಲ್ ಕೂಟಸ್ಥಳ. ಚಾವಡಿಯ ಬಾಗಿಲು ತೆರೆಯಲು ಸಿದ್ಧತೆ ನಡೆಯುತ್ತಿದೆ.",
     "soonContact": "ಪ್ರಶ್ನೆಗಳಿದ್ದರೆ ನಮಗೆ ಬರೆಯಿರಿ:",
-    "soonMainLabel": "ಶೀಘ್ರದಲ್ಲೇ ಬರಲಿದೆ"
+    "soonMainLabel": "ಶೀಘ್ರದಲ್ಲೇ ಬರಲಿದೆ",
+    "copyEmail": "ಇಮೇಲ್ ವಿಳಾಸ ನಕಲಿಸಿ",
+    "emailCopied": "ಇಮೇಲ್ ನಕಲಿಸಲಾಗಿದೆ!"
   }
 }

@@ -21,4 +21,6 @@
  // Feature cards: soft gold spotlight follows the pointer
  if(matchMedia('(hover:hover)').matches)document.querySelectorAll('.feature-card').forEach(c=>c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px')}));
  $('#year').textContent=new Date().getFullYear();applyLanguage();
+ // Opening doors, mandala and other festive effects (js/festive.js) start once the text is in place
+ window.HCFestive?.open();
 })();
