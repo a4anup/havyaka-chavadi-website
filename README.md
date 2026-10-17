@@ -38,6 +38,11 @@ Before launching, put the real store links in `config/app-links.json`.
 - `config/locales.json`: **single source of truth for all English and Kannada UI text**. Both locales have identical keys.
 - `assets/`: supplied artwork (spelling-corrected versions). `havyaka_main_logo.png` (coming-soon logo), `havyaka_chavadi_light.png` / `havyaka_chavadi_dark.png` (hero logo per theme), `havyaka_splash.png` (About section and launch phone), `havyaka_app_icon_1024.png` (browser icon). `havyaka_splash_bg_720.jpg` is a small copy of the splash used as the faint background; regenerate it if the splash changes:
   `sips -s format jpeg -s formatOptions 72 --resampleWidth 720 assets/havyaka_splash.png --out assets/havyaka_splash_bg_720.jpg`
+- The pages load small web copies, not the ~2 MB PNG originals (which stay as the masters). If an original changes, regenerate its copy:
+  `cwebp -q 86 -resize 720 0 assets/havyaka_main_logo.png -o assets/havyaka_main_logo_720.webp`
+  `cwebp -q 84 -resize 1200 0 assets/havyaka_chavadi_light.png -o assets/havyaka_chavadi_light_1200.webp` (same for `_dark`)
+  `cwebp -q 82 assets/havyaka_splash.png -o assets/havyaka_splash.webp`
+  `cwebp -q 86 -resize 512 512 assets/havyaka_app_icon_1024.png -o assets/havyaka_app_icon_512.webp` and `sips -s format png -Z 192 assets/havyaka_app_icon_1024.png --out assets/havyaka_app_icon_192.png` (browser icon)
 
 ## Deploy
 

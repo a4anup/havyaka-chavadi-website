@@ -1,16 +1,15 @@
 /* Coming-soon page — uses brand tokens, toggles and ribbon from styles.css and the festive layer from festive.css. Deleted on launch day by scripts/launch.sh. */
-@property --soon-a{syntax:'<angle>';inherits:false;initial-value:0deg}
 
 .soon{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;overflow-x:hidden;position:relative;background:radial-gradient(120% 70% at 50% 0%,color-mix(in srgb,var(--gold) 14%,var(--ivory)),var(--ivory) 60%)}
 .soon-photo{position:fixed;z-index:0}
 .js .soon:not(.ready) .soon-photo{opacity:0}
 .ready .soon-photo{transition:opacity 2s ease}
 .soon-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='%23D99400' stroke-opacity='.13' stroke-width='1.2'%3E%3Cpath d='M28 8c6 6 6 14 0 20-6-6-6-14 0-20zM28 48c-6-6-6-14 0-20 6 6 6 14 0 20zM8 28c6-6 14-6 20 0-6 6-14 6-20 0zM48 28c-6 6-14 6-20 0 6-6 14-6 20 0z'/%3E%3C/g%3E%3C/svg%3E");-webkit-mask-image:radial-gradient(ellipse at 50% 40%,#000 10%,transparent 75%);mask-image:radial-gradient(ellipse at 50% 40%,#000 10%,transparent 75%)}
-.soon-orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35}
-.soon-orb-1{width:420px;height:420px;background:var(--gold-light);top:-120px;left:-140px;animation:soon-drift 18s ease-in-out infinite alternate}
-.soon-orb-2{width:380px;height:380px;background:#18446d;bottom:-140px;right:-120px;opacity:.22;animation:soon-drift 22s ease-in-out infinite alternate-reverse}
+.soon-orb{position:absolute;border-radius:50%;opacity:.35;background:radial-gradient(closest-side,var(--c),transparent)}
+.soon-orb-1{width:560px;height:560px;top:-120px;left:-140px;--c:var(--gold-light);animation:soon-drift 18s ease-in-out infinite alternate}
+.soon-orb-2{width:520px;height:520px;--c:#18446d;bottom:-140px;right:-120px;opacity:.22;animation:soon-drift 22s ease-in-out infinite alternate-reverse}
 :root[data-theme=dark] .soon-orb-1{opacity:.18}
-:root[data-theme=dark] .soon-orb-2{background:#2a6aa8;opacity:.3}
+:root[data-theme=dark] .soon-orb-2{--c:#2a6aa8;opacity:.3}
 .soon-top,.soon-main,.soon-foot,.soon-ribbon{position:relative;z-index:2}
 
 .soon-embers{position:fixed;z-index:1}
@@ -30,9 +29,11 @@
 .soon-stage .mandala{width:138%}
 
 .soon-logo{position:relative;width:min(320px,72vw);aspect-ratio:1350/1200;perspective:900px;animation:soon-float 6s ease-in-out 1.8s infinite}
-.soon-glow{position:absolute;inset:-18%;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--gold) 55%,transparent),transparent 65%);filter:blur(20px);animation:soon-pulse 4s ease-in-out infinite}
+.soon-glow{position:absolute;inset:-18%;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--gold) 50%,transparent),transparent 68%);animation:soon-pulse 4s ease-in-out infinite}
 .soon-tilt{position:absolute;inset:0}
-.soon-ring{position:absolute;inset:-4px;border-radius:32px;background:conic-gradient(from var(--soon-a),var(--gold),var(--gold-light) 25%,transparent 40%,transparent 60%,var(--gold-light) 75%,var(--gold));animation:soon-spin 6s linear infinite}
+/* Spinning gold border: a conic gradient rotated with transform (GPU) inside a clipped frame */
+.soon-ring{position:absolute;inset:-4px;border-radius:32px;overflow:hidden}
+.soon-ring:before{content:"";position:absolute;left:50%;top:50%;width:150%;aspect-ratio:1;margin:-75% 0 0 -75%;background:conic-gradient(var(--gold),var(--gold-light) 25%,transparent 40%,transparent 60%,var(--gold-light) 75%,var(--gold));animation:spin 6s linear infinite}
 .soon-card{position:absolute;inset:0;border-radius:28px;overflow:hidden;background:var(--surface);box-shadow:0 24px 60px rgba(7,30,56,.28)}
 .soon-card img{width:100%;height:100%;object-fit:cover}
 .soon-shine{position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);transform:translateX(-120%);animation:soon-shine 6s ease-in-out 2.4s infinite}
@@ -42,7 +43,7 @@
 .soon-spark.s3{bottom:-14px;right:16%;animation-delay:1.9s}
 .soon-spark.s4{bottom:30%;left:-24px;width:12px;height:12px;animation-delay:2.6s}
 
-.soon-eyebrow{display:inline-flex;align-items:center;gap:10px;margin:30px 0 0;padding:7px 16px;border:1px solid color-mix(in srgb,var(--gold) 45%,transparent);border-radius:999px;background:color-mix(in srgb,var(--surface) 70%,transparent);font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.soon-eyebrow{display:inline-flex;align-items:center;gap:10px;margin:30px 0 0;padding:7px 16px;border:1px solid color-mix(in srgb,var(--gold) 45%,transparent);border-radius:999px;background:color-mix(in srgb,var(--surface) 88%,transparent);font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
 html[lang=kn] .soon-eyebrow{letter-spacing:.04em;font-size:13px}
 .soon-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);animation:soon-ping 2s ease-out infinite}
 
@@ -69,18 +70,17 @@ html[lang=kn] .soon-eyebrow{letter-spacing:.04em;font-size:13px}
 .ready .soon-card{animation:soon-pop 1s cubic-bezier(.2,.9,.25,1.2) both}
 .js .soon-tilt .logo-doors{border-radius:28px}
 .ready .soon-tilt .logo-doors{animation:soon-pop 1s cubic-bezier(.2,.9,.25,1.2) backwards}
-.ready .soon-ring{animation:soon-spin 6s linear infinite,soon-fade-in 1s .3s both}
+.ready .soon-ring{animation:soon-fade-in 1s .3s both}
 .ready .rise{animation:soon-rise .8s cubic-bezier(.2,.7,.2,1) both}
 .r1{animation-delay:.5s!important}.r2{animation-delay:.6s!important}.r3{animation-delay:1.3s!important}.r4{animation-delay:1.45s!important}.r5{animation-delay:1.6s!important}
 
 @keyframes soon-pop{from{opacity:0;transform:scale(.8) rotate(-3deg)}to{opacity:1;transform:none}}
 @keyframes soon-fade-in{from{opacity:0}to{opacity:1}}
 @keyframes soon-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-@keyframes word-in{from{opacity:0;transform:translateY(.6em) rotateX(-70deg);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+@keyframes word-in{from{opacity:0;transform:translateY(.6em) rotateX(-70deg)}to{opacity:1;transform:none}}
 @keyframes shimmer{0%{background-position:100% 0}35%,100%{background-position:0 0}}
 @keyframes soon-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 @keyframes soon-pulse{0%,100%{opacity:.55;transform:scale(.95)}50%{opacity:1;transform:scale(1.05)}}
-@keyframes soon-spin{to{--soon-a:360deg}}
 @keyframes soon-shine{0%{transform:translateX(-120%)}30%,100%{transform:translateX(120%)}}
 @keyframes soon-twinkle{0%,100%{opacity:0;transform:scale(.4) rotate(0)}50%{opacity:1;transform:scale(1) rotate(90deg)}}
 @keyframes soon-ping{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--gold) 60%,transparent)}100%{box-shadow:0 0 0 10px transparent}}

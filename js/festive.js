@@ -13,8 +13,9 @@
 
  // Mandala: three rings of petals
  const ns='http://www.w3.org/2000/svg',ring=(g,n,d,extra)=>{if(!g)return;for(let i=0;i<n;i++){const p=document.createElementNS(ns,'path');p.setAttribute('d',d);p.setAttribute('pathLength','1');p.setAttribute('transform',`rotate(${i*360/n})`);p.style.setProperty('--d',(i/n).toFixed(2));g.appendChild(p)}if(extra)g.insertAdjacentHTML('beforeend',extra)};
- const mandalas=document.querySelectorAll('.mandala');
- mandalas.forEach(m=>{m.innerHTML='<g class="m-outer"></g><g class="m-mid"></g><g class="m-inner"></g>';ring(m.querySelector('.m-outer'),32,'M0-97Q5-88 0-79Q-5-88 0-97Z','<circle r="99" pathLength="1"/><circle r="76" pathLength="1" class="dots"/>');ring(m.querySelector('.m-mid'),16,'M0-74C13-62 10-48 0-42C-10-48-13-62 0-74Z','<circle r="40" pathLength="1"/>');ring(m.querySelector('.m-inner'),12,'M0-40Q9-33 0-24Q-9-33 0-40Z')});
+ // Each ring gets its own <svg> layer so its slow turn runs on the GPU
+ const mandalas=[...document.querySelectorAll('svg.mandala')].map(svg=>{const m=document.createElement('span');m.className=svg.getAttribute('class');m.setAttribute('aria-hidden','true');m.innerHTML=['m-outer','m-mid','m-inner'].map(c=>`<svg class="${c}" viewBox="-100 -100 200 200"><g></g></svg>`).join('');svg.replaceWith(m);return m});
+ mandalas.forEach(m=>{ring(m.querySelector('.m-outer g'),32,'M0-97Q5-88 0-79Q-5-88 0-97Z','<circle r="99" pathLength="1"/><circle r="76" pathLength="1" class="dots"/>');ring(m.querySelector('.m-mid g'),16,'M0-74C13-62 10-48 0-42C-10-48-13-62 0-74Z','<circle r="40" pathLength="1"/>');ring(m.querySelector('.m-inner g'),12,'M0-40Q9-33 0-24Q-9-33 0-40Z')});
 
  // Logo tilts toward the pointer on devices with a mouse
  const tilts=document.querySelectorAll('.tilt');
