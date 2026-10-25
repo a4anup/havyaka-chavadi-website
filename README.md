@@ -60,3 +60,12 @@ Upload the contents to any static host (Cloudflare Pages, Netlify, GitHub Pages,
 ## Next Claude/Codex prompt
 
 Read `README.md`, `config/locales.json`, `css/styles.css`, `js/main.js`, and `index.html`. Continue building this existing static bilingual Havyaka Chavadi website. Preserve the provided assets and all translation keys. Every new user-visible string must be added to both English and Kannada dictionaries in `config/locales.json`. Keep dark/light/auto themes, mobile accessibility, and the existing navy/gold/ivory brand palette. Do not invent store links or enable personal-data collection without a working backend and privacy policy. Improve the visual polish, test on mobile and desktop, and report changes.
+
+## Planned features — 25 October 2026
+
+- Public page: `features/index.html` lists the same 21 coming-soon feature areas as the app, with local search, category filters, native detail disclosures and shareable feature anchors.
+- The 40 interest choices are a read-only list. Interest selection takes place in the app; this website has no voting form, account system or member-data collection.
+- The homepage links to the explorer while retaining the coming-soon experience. The full launch preview also links to it; this update does not run `scripts/launch.sh`.
+- `js/features.js` supports English/Kannada, light/dark/auto and local filtering. All copy remains in `config/locales.json`; feature styles use the variables in `css/styles.css`. Supplied assets are unchanged.
+- Store URLs are unconfigured. Download links and QR codes remain hidden until valid Chavadi store URLs are supplied in `config/app-links.json`.
+- The app workspace can regenerate this update with `node --import tsx scripts/prepare-feature-site.ts`. It stages files for review; Git publishing is a separate authorized step.

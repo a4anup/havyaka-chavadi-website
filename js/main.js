@@ -15,7 +15,13 @@
  const bar=$('#appBar');if(bar&&'IntersectionObserver' in window){const seen=new Set(),io=new IntersectionObserver(es=>{es.forEach(e=>e.isIntersecting?seen.add(e.target):seen.delete(e.target));bar.classList.toggle('show',!seen.size)});document.querySelectorAll('main .store-row').forEach(r=>io.observe(r))}
  // Store links + QR codes both come from config/app-links.json; QR is drawn as crisp SVG with high error correction so the centre logo doesn't break it
  const drawQR=(el,url)=>{const q=qrcode(0,'H');q.addData(url);q.make();const n=q.getModuleCount();let d='';for(let y=0;y<n;y++)for(let x=0;x<n;x++)if(q.isDark(y,x))d+=`M${x} ${y}h1v1h-1z`;el.innerHTML=`<svg viewBox="-1 -1 ${n+2} ${n+2}" shape-rendering="crispEdges" aria-hidden="true"><path fill="#071E38" d="${d}"/></svg>`};
- fetch('./config/app-links.json',{cache:'no-cache'}).then(r=>r.ok?r.json():{}).then(links=>{document.querySelectorAll('.store-badge').forEach(a=>{if(links[a.dataset.store])a.href=links[a.dataset.store]});let shown=0;document.querySelectorAll('.qr-card').forEach(c=>{const url=links[c.dataset.store];c.hidden=!(url&&window.qrcode);if(!c.hidden){drawQR(c.querySelector('.qr-svg'),url);shown++}});$('#qrRow').hidden=!shown}).catch(()=>{});
+ const validStore=(store,value)=>{try{const url=new URL(value);return url.protocol==='https:'&&(store==='googlePlay'?(url.hostname==='play.google.com'&&url.pathname==='/store/apps/details'&&url.searchParams.get('id')==='in.havyakachavadi.app'):(url.hostname==='apps.apple.com'&&/\/id\d+/.test(url.pathname)))}catch{return false}};
+ fetch('./config/app-links.json',{cache:'no-cache'}).then(r=>r.ok?r.json():{}).then(links=>{
+  document.querySelectorAll('.store-badge').forEach(a=>{const url=links[a.dataset.store];a.hidden=!validStore(a.dataset.store,url);if(!a.hidden)a.href=url});
+  document.querySelectorAll('.store-row').forEach(row=>row.hidden=![...row.querySelectorAll('.store-badge')].some(a=>!a.hidden));
+  if(bar)bar.hidden=![...bar.querySelectorAll('.store-badge')].some(a=>!a.hidden);
+  let shown=0;document.querySelectorAll('.qr-card').forEach(c=>{const url=links[c.dataset.store];c.hidden=!(validStore(c.dataset.store,url)&&window.qrcode);if(!c.hidden){drawQR(c.querySelector('.qr-svg'),url);shown++}});$('#qrRow').hidden=!shown;
+ }).catch(()=>{});
  // Scroll reveal: sections fade up once as they enter the viewport
  const reveal=document.querySelectorAll('[data-reveal]');if('IntersectionObserver' in window){const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}}),{threshold:.15,rootMargin:'0px 0px -40px 0px'});reveal.forEach(el=>ro.observe(el))}else reveal.forEach(el=>el.classList.add('in'));
  const header=$('.header'),onScroll=()=>header.classList.toggle('scrolled',scrollY>8);addEventListener('scroll',onScroll,{passive:true});onScroll();
